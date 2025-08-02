@@ -1,0 +1,42 @@
+# Create package.json for npm/node.js compatibility (optional but good practice)
+package_json = """{
+  "name": "hades-ecommerce",
+  "version": "1.0.0",
+  "description": "A premium dark-themed e-commerce website",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "dev": "live-server .",
+    "build": "echo 'No build process needed for static site'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "ecommerce",
+    "dark-theme",
+    "responsive",
+    "html",
+    "css",
+    "javascript",
+    "tailwind"
+  ],
+  "author": "devilhades",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "serve": "^14.2.1",
+    "gh-pages": "^6.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/hades-ecommerce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/hades-ecommerce/issues"
+  },
+  "homepage": "https://yourusername.github.io/hades-ecommerce"
+}"""
+
+with open('package.json', 'w', encoding='utf-8') as f:
+    f.write(package_json)
+
+print("package.json created successfully!")

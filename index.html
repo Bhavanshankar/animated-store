@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hades - Premium Quality Products</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'dark-bg': '#0a0a0a',
+                        'darker-bg': '#000000',
+                        'accent-red': '#dc2626',
+                        'accent-orange': '#ea580c',
+                        'accent-gold': '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-dark-bg text-white font-inter">
+    <!-- Header -->
+    <header class="glass-dark fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="brand-logo">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-accent-red to-accent-orange bg-clip-text text-transparent">HADES</h1>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" data-page="home" class="nav-link active">Home</a>
+                    <a href="#" data-page="categories" class="nav-link">Categories</a>
+                    <a href="#" data-page="products" class="nav-link">Products</a>
+                    <a href="#" data-page="about" class="nav-link">About</a>
+                    <a href="#" data-page="contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="search-btn">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </button>
+                    <button class="cart-btn relative">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6H19"></path>
+                        </svg>
+                        <span class="cart-count absolute -top-2 -right-2 bg-accent-red text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="mobile-menu-btn md:hidden">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="modal-content bg-darker-bg rounded-lg p-6 max-w-md mx-auto mt-20">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold">Search Products</h3>
+                <button class="close-search text-gray-400 hover:text-white">×</button>
+            </div>
+            <input type="text" id="searchInput" placeholder="Search for products..." class="w-full p-3 bg-dark-bg border border-gray-700 rounded-lg text-white">
+            <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal hidden fixed inset-0 bg-black bg-opacity-50 z-50">
+        <div class="modal-content bg-darker-bg rounded-lg p-6 max-w-md mx-auto mt-20">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold">Shopping Cart</h3>
+                <button class="close-cart text-gray-400 hover:text-white">×</button>
+            </div>
+            <div id="cartItems" class="space-y-4"></div>
+            <div class="border-t border-gray-700 pt-4 mt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-lg font-semibold">Total: </span>
+                    <span id="cartTotal" class="text-lg font-bold text-accent-gold">₹0</span>
+                </div>
+                <button class="btn-primary w-full">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-20">
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <!-- Hero Section -->
+            <section class="hero-section relative min-h-screen flex items-center">
+                <div class="container mx-auto px-6">
+                    <div class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="hero-content">
+                            <h1 class="text-5xl lg:text-7xl font-bold mb-6 animate-fade-in">
+                                Premium
+                                <span class="bg-gradient-to-r from-accent-red to-accent-orange bg-clip-text text-transparent">
+                                    Quality
+                                </span>
+                                Products
+                            </h1>
+                            <p class="text-xl text-gray-300 mb-8 animate-fade-in-delay">
+                                Experience the finest selection of gaming, fashion, and tech products at unbeatable prices.
+                            </p>
+                            <div class="flex space-x-4 animate-fade-in-delay-2">
+                                <button class="btn-primary" data-page="products">Shop Now</button>
+                                <button class="btn-secondary" data-page="categories">Browse Categories</button>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/gpt4o_images/ddadb2b5-d646-4b06-a874-5a34ad75e04a.png" alt="Hades Gaming Laptop" class="w-full max-w-lg mx-auto floating">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Featured Products -->
+            <section class="py-20">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-bold text-center mb-16">
+                        Featured <span class="text-accent-gold">Products</span>
+                    </h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="featuredProducts">
+                        <!-- Products will be loaded here by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories Preview -->
+            <section class="py-20 bg-darker-bg">
+                <div class="container mx-auto px-6">
+                    <h2 class="text-4xl font-bold text-center mb-16">
+                        Shop by <span class="text-accent-orange">Category</span>
+                    </h2>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6" id="categoriesPreview">
+                        <!-- Categories will be loaded here by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Categories Page -->
+        <div id="categories" class="page hidden">
+            <section class="py-20">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-5xl font-bold text-center mb-16">
+                        Product <span class="text-accent-gold">Categories</span>
+                    </h1>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8" id="categoriesGrid">
+                        <!-- Categories will be loaded here by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Products Page -->
+        <div id="products" class="page hidden">
+            <section class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-col lg:flex-row justify-between items-center mb-16">
+                        <h1 class="text-5xl font-bold mb-6 lg:mb-0">
+                            All <span class="text-accent-gold">Products</span>
+                        </h1>
+                        <div class="flex space-x-4">
+                            <select id="categoryFilter" class="bg-dark-bg border border-gray-700 rounded-lg px-4 py-2">
+                                <option value="">All Categories</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Gaming">Gaming</option>
+                                <option value="Fashion">Fashion</option>
+                                <option value="Accessories">Accessories</option>
+                            </select>
+                            <select id="sortBy" class="bg-dark-bg border border-gray-700 rounded-lg px-4 py-2">
+                                <option value="name">Sort by Name</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="productsGrid">
+                        <!-- Products will be loaded here by JS -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about" class="page hidden">
+            <section class="py-20">
+                <div class="container mx-auto px-6">
+                    <div class="max-w-4xl mx-auto">
+                        <h1 class="text-5xl font-bold text-center mb-16">
+                            About <span class="text-accent-gold">Hades</span>
+                        </h1>
+                        
+                        <div class="grid lg:grid-cols-2 gap-12 items-center mb-20">
+                            <div>
+                                <h2 class="text-3xl font-bold mb-6">Our Story</h2>
+                                <p class="text-gray-300 text-lg mb-6">
+                                    Founded by devilhades, Hades represents the pinnacle of premium quality products at unbeatable prices. We believe that everyone deserves access to top-tier gaming equipment, fashion, and technology.
+                                </p>
+                                <p class="text-gray-300 text-lg">
+                                    Every product in our catalog is carefully selected and tested to meet our high standards. We're not just selling products – we're delivering experiences that enhance your lifestyle.
+                                </p>
+                            </div>
+                            <div class="bg-darker-bg p-8 rounded-lg">
+                                <h3 class="text-2xl font-bold mb-6 text-accent-orange">Our Mission</h3>
+                                <p class="text-gray-300 mb-6">
+                                    To provide premium quality products at unbeatable prices while maintaining exceptional customer service and support.
+                                </p>
+                                <div class="space-y-4">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-2 h-2 bg-accent-red rounded-full"></div>
+                                        <span>Premium Quality</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-2 h-2 bg-accent-orange rounded-full"></div>
+                                        <span>Fast Shipping</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-2 h-2 bg-accent-gold rounded-full"></div>
+                                        <span>24/7 Support</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page hidden">
+            <section class="py-20">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-5xl font-bold text-center mb-16">
+                        Contact <span class="text-accent-gold">Us</span>
+                    </h1>
+                    
+                    <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                        <div>
+                            <h2 class="text-3xl font-bold mb-8">Get in Touch</h2>
+                            <form id="contactForm" class="space-y-6">
+                                <div>
+                                    <label class="form-label">Name</label>
+                                    <input type="text" name="name" required class="form-control">
+                                </div>
+                                <div>
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="email" required class="form-control">
+                                </div>
+                                <div>
+                                    <label class="form-label">Subject</label>
+                                    <input type="text" name="subject" required class="form-control">
+                                </div>
+                                <div>
+                                    <label class="form-label">Message</label>
+                                    <textarea name="message" rows="5" required class="form-control"></textarea>
+                                </div>
+                                <button type="submit" class="btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                        
+                        <div class="bg-darker-bg p-8 rounded-lg">
+                            <h3 class="text-2xl font-bold mb-8 text-accent-orange">Contact Information</h3>
+                            <div class="space-y-6">
+                                <div>
+                                    <h4 class="font-semibold mb-2">Email</h4>
+                                    <p class="text-gray-300">devilhades@example.com</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Phone</h4>
+                                    <p class="text-gray-300">+91 98765 43210</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Address</h4>
+                                    <p class="text-gray-300">123 Fire Street, Underworld Colony<br>Mumbai, Maharashtra 400001</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">Business Hours</h4>
+                                    <p class="text-gray-300">Monday - Friday: 9:00 AM - 8:00 PM<br>Saturday - Sunday: 10:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Individual Product Pages -->
+        <div id="product-gaming-laptop" class="page product-page hidden"></div>
+        <div id="product-fire-sneakers" class="page product-page hidden"></div>
+        <div id="product-smart-watch" class="page product-page hidden"></div>
+        <div id="product-gaming-headset" class="page product-page hidden"></div>
+        <div id="product-black-hoodie" class="page product-page hidden"></div>
+        <div id="product-rgb-keyboard" class="page product-page hidden"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-darker-bg py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 bg-gradient-to-r from-accent-red to-accent-orange bg-clip-text text-transparent">HADES</h3>
+                    <p class="text-gray-400">Premium quality products at unbeatable prices.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" data-page="home" class="hover:text-white">Home</a></li>
+                        <li><a href="#" data-page="products" class="hover:text-white">Products</a></li>
+                        <li><a href="#" data-page="categories" class="hover:text-white">Categories</a></li>
+                        <li><a href="#" data-page="about" class="hover:text-white">About</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Electronics</a></li>
+                        <li><a href="#" class="hover:text-white">Gaming</a></li>
+                        <li><a href="#" class="hover:text-white">Fashion</a></li>
+                        <li><a href="#" class="hover:text-white">Accessories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>devilhades@example.com</li>
+                        <li>+91 98765 43210</li>
+                        <li>Mumbai, Maharashtra</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Hades. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
